@@ -10849,12 +10849,13 @@ video.bg-video {
   position: fixed;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
+  transform: translate(-50%, -50%);
   width: auto;
   height: auto;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
 
 @media (pointer: coarse) and (hover: none) {
@@ -10873,6 +10874,7 @@ video.bg-video {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh; 
 }
 .masthead:before {
   content: "";
