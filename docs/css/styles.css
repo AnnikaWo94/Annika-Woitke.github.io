@@ -134,7 +134,7 @@ body {
       rgba(92, 77, 66, 0.5) 0%,
       rgba(92, 77, 66, 0.5) 100%
     ),
-    url("../assets/DSC05834a.JPG");
+    url("../assets/DSC05834a.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed; /* bleibt stehen, Inhalt scrollt */
@@ -11862,7 +11862,7 @@ header.masthead_sydney {
   height: 100vh; 	
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.6) 0%, rgba(92, 77, 66, 0.6) 100%), url("../assets/sydney5.jpg");
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.6) 0%, rgba(92, 77, 66, 0.6) 100%), url("../assets/Sydney5.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -11873,22 +11873,12 @@ header.masthead_sydney h1, header.masthead .h1 {
 }
 header.masthead_sydney h1, header.masthead .h1 {
   font-size: 2.25rem;
-}
-header.masthead_DSC {
-  height: 100vh; 	
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.5) 0%, rgba(92, 77, 66, 0.5) 100%), url("../assets/DSC059421.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
 }
 header.masthead_kontakt {
   height: 100vh; 	
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.3) 0%, rgba(92, 77, 66, 0.3) 100%), url("../assets/IMGL9616d.jpg");
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.3) 0%, rgba(92, 77, 66, 0.3) 100%), url("../assets/IMGL9616d.JPG");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
