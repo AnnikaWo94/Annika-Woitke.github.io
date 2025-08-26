@@ -218,6 +218,23 @@ p {
   margin-bottom: 1rem;
 }
 
+a.mein-link {
+  color: grey;         /* Textfarbe für normalen Zustand */
+  text-decoration: none; /* Unterstreichung entfernen, optional */
+}
+
+a.mein-link:visited {
+  color: grey;         /* Farbe, nachdem der Link besucht wurde */
+}
+
+a.mein-link:hover {
+  color: orange;         /* Farbe beim Drüberfahren mit der Maus */
+}
+
+a.mein-link:active {
+  color: orange;         /* Farbe beim Klicken */
+}
+
 abbr[title] {
   -webkit-text-decoration: underline dotted;
           text-decoration: underline dotted;
