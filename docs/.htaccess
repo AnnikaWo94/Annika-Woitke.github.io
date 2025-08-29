@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Prüfen: wenn angeforderte URL keine existierende Datei ist …
+RewriteCond %{REQUEST_FILENAME} !-f
+# … und kein existierender Ordner …
+RewriteCond %{REQUEST_FILENAME} !-d
+# … dann hänge intern .html an
+RewriteRule ^([a-zA-Z0-9_-]+)$ $1.html [L]
