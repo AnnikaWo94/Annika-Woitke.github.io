@@ -1,87 +1,1295 @@
 <!DOCTYPE html>
 <html lang="de">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Annika Woitke</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/music.ico" />
-        <!-- Custom Google font-->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Annika Woitke – freiberufliche Musicaldarstellerin. Master Musical Theatre (Leeds Conservatoire). Engagements u.a. am Stadttheater Bremerhaven und Varia Vineta Berlin." />
+    <meta name="author" content="Annika Woitke" />
+    <title>Annika Woitke – Musicaldarstellerin</title>
+    <link rel="icon" type="image/x-icon" href="assets/music.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== DESIGN TOKENS ===== */
+        :root {
+            --aw-bg:          #faf7f2;
+            --aw-bg-card:     #ffffff;
+            --aw-text:        #2a2420;
+            --aw-text-muted:  #6b5f57;
+            --aw-accent:      #7a2e3f;
+            --aw-accent-soft: #c4a5ac;
+            --aw-border:      #e8e0d6;
+        }
 
-    <body class="d-flex flex-column h-100">
-        <main class="flex-shrink-0">
-    <body id="page-top">
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--aw-text);
+            background: var(--aw-bg);
+        }
+        img { display: block; max-width: 100%; }
+        a { color: inherit; text-decoration: none; }
 
-            <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-                <div class="container px-5">
-            	  <a class="navbar-brand" href="#page-top">Annika Woitke</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="index">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="resume">Über mich</a></li>
-                            <li class="nav-item"><a class="nav-link" href="gallery">Galerie</a></li>
-                            <li class="nav-item"><a class="nav-link" href="media">Media</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact">Kontakt</a></li>
-                        </ul>
-                    </div>
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+
+        /* Tap-Highlight unterdrücken auf Touch-Geräten */
+        a, button { -webkit-tap-highlight-color: transparent; }
+
+        /* ===== NAVBAR ===== */
+        #mainNav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+        #mainNav.scrolled {
+            background: rgba(20, 15, 12, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 1px 0 rgba(255,255,255,0.08);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.25rem;
+            align-items: center;
+        }
+        .nav-links a {
+            display: block;
+            padding: 0.5rem 0.9rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.85);
+            border-radius: 2px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--aw-accent-soft);
+        }
+
+        /* Hamburger */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: 1.5px solid rgba(255,255,255,0.5);
+            border-radius: 2px;
+            padding: 0.5rem 0.65rem;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            min-width: 44px;
+            min-height: 44px;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.25s ease;
+        }
+        .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+
+        @media (max-width: 768px) {
+            .nav-toggle { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                flex-direction: column;
+                background: rgba(20,15,12,0.97);
+                padding: 1rem 0 1.5rem;
+                gap: 0;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+        }
+
+        /* ===== SECTION DIVIDER (full-bleed photo strip) ===== */
+        .photo-divider {
+            width: 100%;
+            height: 55vh;
+            min-height: 320px;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+        .photo-divider::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(20,15,12,0.48), rgba(20,15,12,0.52));
+        }
+        .photo-divider-label {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+        }
+        .photo-divider-label .eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--aw-accent-soft);
+            margin-bottom: 0.5rem;
+        }
+        .photo-divider-label h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            line-height: 1.1;
+        }
+        @media (max-width: 900px) {
+            .photo-divider {
+                background-attachment: scroll;
+                height: 42vw;
+                min-height: 200px;
+            }
+        }
+
+        /* ===== HERO ===== */
+        /* ===== HERO ===== */
+        #hero {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(20,15,12,0.55), rgba(20,15,12,0.60)),
+                url('assets/DSC05834a.jpg') center/cover no-repeat fixed;
+            display: flex;
+            align-items: center;
+            padding: 7rem 1.5rem 4rem;
+        }
+        @media (max-width: 900px) {
+            #hero { background-attachment: scroll; }
+        }
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .hero-photo {
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            border-radius: 3px;
+            box-shadow: 0 40px 80px -30px rgba(0,0,0,0.5);
+        }
+        .hero-photo img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+        }
+        .hero-text { color: #fff; }
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--aw-accent-soft);
+            margin-bottom: 1.25rem;
+        }
+        .hero-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5.5vw, 4.75rem);
+            font-weight: 600;
+            line-height: 1.05;
+            margin-bottom: 0.75rem;
+        }
+        .hero-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1.1rem, 2vw, 1.65rem);
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 2rem;
+         }
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 2rem;
+            margin-bottom: 2.5rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+        .hero-meta span { display: inline-flex; align-items: center; gap: 0.5rem; }
+        .hero-meta span::before {
+            content: '';
+            width: 5px; height: 5px;
+            background: var(--aw-accent-soft);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+	.break {
+    	 flex-basis: 100%;
+   	 height: 0;
+	}
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.75rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            border-radius: 2px;
+            transition: all 0.25s ease;
+            border: 1.5px solid transparent;
+            cursor: pointer;
+            min-height: 48px; /* Touch-freundliche Mindesthöhe */
+        }
+        .btn-primary { background: var(--aw-accent); color: #fff; border-color: var(--aw-accent); }
+        .btn-primary:hover { background: #5a1f2c; border-color: #5a1f2c; transform: translateY(-1px); }
+        .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.6); }
+        .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+   .hero-icons {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.hero-icons .icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-icons .icon-link img {
+    height: 1.7rem;
+    width: auto;
+    display: block;
+}
+/* insta etwas größer */
+.hero-icons .icon-link[aria-label="Instagram"] img {
+    height: 2.5rem;
+}
+/* Filmmakers etwas größer */
+.hero-icons .icon-link[aria-label="Filmmakers"] img {
+    height: 2.0rem;
+}
+        .icon-link:hover { border-color: var(--aw-accent-soft); color: var(--aw-accent-soft); transform: translateY(-2px); }
+        .icon-link svg { width: 20px; height: 20px; }
+
+        @media (max-width: 860px) {
+            .hero-inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+            .hero-photo { max-width: 280px; margin: 0 auto; }
+            .hero-meta, .hero-actions, .hero-icons { justify-content: center; }
+            .hero-actions { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 260px; justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            #hero { padding: 6rem 1.25rem 3.5rem; min-height: 100svh; }
+            .hero-photo { max-width: 220px; }
+        }
+
+        /* ===== LIGHT CONTENT SECTIONS ===== */
+        .section {
+            background: var(--aw-bg);
+            padding: 5rem 1.5rem;
+        }
+        @media (max-width: 480px) {
+            .section { padding: 3.5rem 1.1rem; }
+        }
+        .section-inner {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        .section-eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--aw-accent);
+            margin-bottom: 0.75rem;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            color: var(--aw-text);
+            margin-bottom: 0;
+        }
+        .section-divider {
+            width: 50px; height: 2px;
+            background: var(--aw-accent);
+            margin: 1.25rem auto 0;
+            border: none;
+        }
+
+        /* ===== VITA ===== */
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            border-bottom: 1px solid var(--aw-border);
+            margin-bottom: 2.5rem;
+        }
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--aw-text-muted);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            transition: all 0.2s ease;
+        }
+        .lang-btn.active { color: var(--aw-accent); border-bottom-color: var(--aw-accent); }
+        .lang-btn:hover { color: var(--aw-text); }
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+        .vita-section {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 2.5rem;
+            margin-bottom: 2.75rem;
+            align-items: start;
+        }
+        .vita-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--aw-accent);
+            padding-top: 0.2rem;
+        }
+        .vita-section ul { list-style: none; }
+        .vita-section ul li {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 1rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--aw-border);
+            font-size: 1rem;
+            line-height: 1.65;
+        }
+        .vita-section ul li:last-child { border-bottom: none; }
+        .vita-year { font-weight: 600; color: var(--aw-text-muted); }
+        .vita-role { font-weight: 600; }
+        .vita-venue { color: var(--aw-text-muted); font-size: 0.92rem; }
+        .vita-section p { font-size: 1rem; line-height: 1.75; color: var(--aw-text); }
+
+        @media (max-width: 680px) {
+            .vita-section { grid-template-columns: 1fr; gap: 0.75rem; }
+            .vita-section h3 { border-bottom: 2px solid var(--aw-accent); display: inline-block; padding-bottom: 0.3rem; }
+            .vita-section ul li { grid-template-columns: 56px 1fr; gap: 0.65rem; font-size: 0.93rem; }
+            .vita-year { font-size: 0.88rem; }
+        }
+
+        /* ===== GALERIE ===== */
+        .gallery-group { margin-bottom: 3rem; }
+        .gallery-group-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--aw-text);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--aw-border);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+        }
+        .gallery-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            border-radius: 2px;
+            background: var(--aw-border);
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.04); }
+        .gallery-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 0.6rem 0.75rem;
+            background: linear-gradient(transparent, rgba(20,15,12,0.8));
+            color: rgba(255,255,255,0.9);
+            font-size: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gallery-item:hover .gallery-caption { opacity: 1; }
+        /* Auf Touch-Geräten Caption immer eingeblendet */
+        @media (hover: none) {
+            .gallery-caption { opacity: 1; }
+        }
+        .gallery-item-landscape { aspect-ratio: 3/2; }
+
+        @media (max-width: 860px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+            .gallery-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+            .gallery-portraits { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
+            .gallery-group-title { font-size: 1.2rem; }
+            .gallery-portraits { grid-template-columns: repeat(1, 1fr); }
+        }
+
+        /* Portraits: Reihe 1 = 3 Bilder, Reihe 2 = 4 Bilder */
+        @media (min-width: 861px) {
+            .gallery-portraits {
+                grid-template-columns: repeat(12, 1fr);
+            }
+            /* Reihe 1: 3 Bilder à 4/12 */
+            .gallery-portraits .gallery-item:nth-child(1),
+            .gallery-portraits .gallery-item:nth-child(2),
+            .gallery-portraits .gallery-item:nth-child(3) {
+                grid-column: span 4;
+            }
+            /* Reihe 2: 4 Bilder à 3/12 */
+            .gallery-portraits .gallery-item:nth-child(4),
+            .gallery-portraits .gallery-item:nth-child(5),
+            .gallery-portraits .gallery-item:nth-child(6),
+            .gallery-portraits .gallery-item:nth-child(7) {
+                grid-column: span 3;
+            }
+        }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(0,0,0,0.95);
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            touch-action: pan-y;
+        }
+        .lightbox.open { display: flex; }
+        .lightbox-img {
+            max-width: min(92vw, 1000px);
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 2px;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+        .lightbox-close {
+            position: fixed;
+            top: 0.75rem; right: 0.75rem;
+            background: rgba(0,0,0,0.5);
+            border: none;
+            border-radius: 50%;
+            width: 44px; height: 44px;
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.5rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: background 0.2s;
+        }
+        .lightbox-close:hover { background: rgba(255,255,255,0.15); }
+        .lightbox-nav {
+            position: fixed;
+            top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: 1.5px solid rgba(255,255,255,0.2);
+            border-radius: 2px;
+            color: #fff;
+            font-size: 1.5rem;
+            padding: 0.75rem 1rem;
+            min-width: 44px; min-height: 44px;
+            cursor: pointer;
+            transition: background 0.2s;
+            line-height: 1;
+        }
+        .lightbox-nav:hover { background: rgba(255,255,255,0.22); }
+        .lightbox-prev { left: 0.5rem; }
+        .lightbox-next { right: 0.5rem; }
+        @media (max-width: 480px) {
+            .lightbox-nav { display: none; } /* Auf Handy: Wischen stattdessen */
+            .lightbox-img { max-height: 80vh; }
+        }
+
+        /* ===== MEDIA ===== */
+        .media-card {
+            background: var(--aw-bg-card);
+            border: 1px solid var(--aw-border);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .media-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+        .media-group { margin-bottom: 3rem; }
+        .media-group-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--aw-text);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--aw-border);
+        }
+        .media-label {
+            padding: 0.75rem 1rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--aw-text);
+            text-align: center;
+        }
+        .flag { height: 18px; vertical-align: middle; margin-right: 4px; display: inline; }
+        video, audio { display: block; width: 100%; }
+        .audio-box {
+            background: var(--aw-bg);
+            border: 1px solid var(--aw-border);
+            border-radius: 2px;
+            padding: 1rem;
+        }
+        .audio-box + .audio-box { margin-top: 0.75rem; }
+        .audio-label { font-size: 0.85rem; font-weight: 600; margin-top: 0.5rem; text-align: center; color: var(--aw-text); }
+
+        @media (max-width: 680px) {
+            .media-grid { grid-template-columns: 1fr; }
+        }
+.more-videos-box {
+    margin: 20px auto 0;
+    padding: 18px 22px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+
+    background: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 14px;
+}
+.cta-text {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: #444;
+}
+
+.cta-link {
+    display: inline-block;
+    padding: 10px 16px;
+    background: #000;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.cta-link:hover {
+    transform: translateY(-2px);
+    opacity: 0.85;
+}
+
+.more-videos-box p {
+    margin: 0 0 8px;
+    color: #000;
+}
+
+.more-videos-box a {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.more-videos-box a:hover {
+    opacity: 0.8;
+}
+
+        /* ===== KONTAKT ===== */
+        #kontakt {
+            background:
+                linear-gradient(rgba(20,15,12,0.62), rgba(20,15,12,0.68)),
+                url('assets/contact.jpg') center/cover no-repeat fixed;
+            padding: 5rem 1.5rem 6rem;
+        }
+        @media (max-width: 900px) { #kontakt { background-attachment: scroll; } }
+        @media (max-width: 480px) {
+            #kontakt { padding: 4rem 1.1rem 5rem; }
+            .contact-card { padding: 1.1rem 1.25rem; }
+            .contact-lead { font-size: 1.05rem; }
+        }
+        .contact-inner {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .contact-eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--aw-accent-soft);
+            margin-bottom: 0.75rem;
+        }
+        .contact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .contact-lead {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+        .contact-divider {
+            width: 50px; height: 2px;
+            background: var(--aw-accent);
+            margin: 0 auto 2.5rem;
+        }
+        .contact-cards { display: flex; flex-direction: column; gap: 0.85rem; }
+        .contact-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.35rem 1.75rem;
+            background: rgba(250,247,242,0.95);
+            border-radius: 2px;
+            text-align: left;
+            color: var(--aw-text);
+            transition: all 0.25s ease;
+            backdrop-filter: blur(8px);
+        }
+        .contact-card:hover {
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.35);
+        }
+        .contact-card-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--aw-text-muted);
+            margin-bottom: 0.2rem;
+        }
+        .contact-card-value { font-size: 1.05rem; font-weight: 600; }
+        .contact-arrow { font-size: 1.3rem; color: var(--aw-accent); }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(20,15,12,0.97);
+            color: rgba(255,255,255,0.55);
+            font-size: 0.85rem;
+            padding: 1.75rem 1.5rem;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        footer a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
+        footer a:hover { color: var(--aw-accent-soft); }
+        .footer-links { display: flex; gap: 1rem; }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* ===== SECTION SCROLL INDICATOR ===== */
+        .scroll-down {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--aw-text-muted);
+            animation: bounce 2s infinite;
+            z-index: 2;
+        }
+        .scroll-down svg { width: 28px; height: 28px; }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+        #hero { position: relative; }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== NAV ===== -->
+    <nav id="mainNav">
+        <div class="nav-inner">
+            <a class="navbar-brand" href="#hero">Annika Woitke</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Navigation öffnen">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="active">Home</a></li>
+                <li><a href="#vita">Über mich</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero">
+        <div class="hero-inner">
+            <div class="hero-photo">
+                <img src="assets/Headshots25/IMGL9375a.png" alt="Annika Woitke, Musicaldarstellerin – Headshot" style="border-radius: 15px;"> />
+            </div>
+            <div class="hero-text">
+                 <h1 class="hero-name">Annika Woitke</h1>
+                <p class="hero-tagline"> Musicaldarstellerin </p>
+                <div class="hero-meta">
+                    <span>Master in Musical Theatre</span>
+			 <div class="break"></div>
+                    <span>Wohnhaft in Berlin</span>
                 </div>
-            </nav>
-            <!-- Header-->
-      			  <!-- Masthead_Sydney-->
-       			 <header class="masthead_sydney">
-        			    <div class="container px-4 px-lg-5 h-100">
-             			   <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-                			    <div class="col-lg-8 align-self-end">
-						<h2 class="display-3 fw-bolder"><span class="text-gradient d-inline">Annika Woitke</span></h2>
-					<div style="margin-top: 0.8rem;"></div>
-						<h1 class="display-5 fw-bolder"><span class="text-gradient d-inline">&middot; Musicaldarstellerin &middot;</span></h2>	
-					<div style="margin-top: 1.0rem;"></div>
-					<a class="btn btn-dark m-3" href="https://www.instagram.com/annika_woitke" target="_blank"><img src="assets/instagram.svg" tyle="height: 1.8em; vertical-align: middle;"alt="Instagram"></a>
-					<a class="btn btn-dark m-3" href="https://www.filmmakers.eu/de/actors/annika-woitke" target="_blank"><img src="assets/filmmakers.png" style="height: 2.2em; vertical-align: middle;"alt="Filmmakers" ></a>
-					<a class="btn btn-dark m-3" href="mailto:info@woitke.de?subject=Anfrage&body=Hallo%20Annika,%0A%0Aich%20habe%20eine%20Frage" target="_blank"rel="noopener noreferrer"><img src="assets/email.svg"  style="height: 1.8em; vertical-align: 						middle;"alt="E-Mail"></a>	
-                    			    </div>
-                			<div class="text-center text-xxl-start">
-              			  </div>
-          			  </div>
-        			</header>
+                <div class="hero-actions">
+                    <a href="#media" class="btn btn-primary">Showreel ansehen</a>
+                    <a href="#vita" class="btn btn-outline">Vita</a>
+                </div>
+<div class="hero-icons">
+    <a href="https://www.instagram.com/annika_woitke"
+       target="_blank"
+       rel="noopener"
+       class="icon-link"
+       aria-label="Instagram">
+        <img src="assets/instagram.svg" alt="Instagram">
+    </a>
+
+    <a href="https://www.filmmakers.eu/de/actors/annika-woitke"
+       target="_blank"
+       rel="noopener"
+       class="icon-link"
+       aria-label="Filmmakers">
+        <img src="assets/filmmakers.png" alt="Filmmakers">
+    </a>
+
+  
+    <a href="mailto:info@woitke.de?subject=Anfrage&body=Hallo%20Annika,%0A%0Aich%20habe%20eine%20Frage"
+       class="icon-link"
+       aria-label="E-Mail">
+        <img src="assets/email.svg" alt="E-Mail">
+    </a>
+</div>
+            </div>
+        </div>
+        <div class="scroll-down" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+    </section>
+
+    <!-- ===== PHOTO DIVIDER: Goethetheater ===== -->
+    <div class="photo-divider" style="background-image: url('assets/Goethetheater.jpg');">
+        <div class="photo-divider-label">
+            <h2>Vita</h2>
+        </div>
+    </div>
+
+    <!-- ===== VITA ===== -->
+    <section id="vita" class="section">
+        <div class="section-inner">
+            <div class="section-header reveal">
+
+                <h2 class="section-title">Über mich</h2>
+                <hr class="section-divider" />
+            </div>
+
+            <div class="lang-switch reveal">
+                <button class="lang-btn active" data-lang="de">Deutsch</button>
+                <button class="lang-btn" data-lang="en">English</button>
+            </div>
+
+            <!-- DEUTSCH -->
+            <div class="lang-content active" data-lang-content="de">
+                <div class="vita-section reveal">
+                    <h3>Engagements</h3>
+                    <ul>
+                        <li><span class="vita-year">2025</span><span><span class="vita-role">Tänzerin</span> · Kinofilm „Superbuhei (AT)", Regie: Josef Brandl, Junifilm GmbH<br><span class="vita-venue">Sommer 2025</span></span></li>
+                        <li><span class="vita-year">2024/25</span><span><span class="vita-role">„Pauline" u.&nbsp;a.</span> · Kindershows „Game Over", „Schneeweißchen und Rosenrot", „Rotkäppchen"<br><span class="vita-venue">Varia Vineta (Stadttheater Pankow), Berlin</span></span></li>
+                        <li><span class="vita-year">2020</span><span><span class="vita-role">„Elfie"</span> · Rio Reiser<br><span class="vita-venue">Stadttheater Bremerhaven</span></span></li>
+                        <li><span class="vita-year">2019</span><span><span class="vita-role">Choreographie</span> · Tanzsequenz im Kurzfilm „Superbuhei", Regie: Josef Brandl, Skalar Film GmbH</span></li>
+                        <li><span class="vita-year">2018</span><span><span class="vita-role">Ensemble</span> · Blues Brothers<br><span class="vita-venue">Stadttheater Bremerhaven</span></span></li>
+                    </ul>
+                </div>
+                <div class="vita-section reveal">
+                    <h3>Ausbildung</h3>
+                    <ul>
+                        <li><span class="vita-year">2023</span><span><span class="vita-role">Master of Arts in Musical Theatre</span> mit Auszeichnung<br><span class="vita-venue">Leeds Conservatoire, UK</span></span></li>
+                    </ul>
+                </div>
+                <div class="vita-section reveal">
+                    <h3>Gesang</h3>
+                    <p>Ausbildung in der Complete Vocal Technique (CVT) und der Estill-Methode bei Stephanie Müller, Sarah Redgwick, Kathy Taylor-Jones und Aaron Newland-Bentley.</p>
+                </div>
+                <div class="vita-section reveal">
+                    <h3>Schauspiel</h3>
+                    <p>Unterricht bei Keeley Forsyth, Victoria Gimby, Nicki Davy und Adam Stadius, u.&nbsp;a. in der Meissner-Technik.</p>
+                </div>
+                <div class="vita-section reveal">
+                    <h3>Tanz</h3>
+                    <p>Kontinuierliche Weiterbildung bei Lucy Hind, Isabella Klesse, Amelie Harreß, Damien Poole und Kade Ferraiolo.</p>
+                </div>
+                <div class="vita-section reveal">
+                    <h3>Masterclasses &amp; Workshops</h3>
+                    <p>Gesang: Pia Douwes, Willemijn Verkaik, Andreas Bongard u.&nbsp;a.<br>
+                    Tanz: Neus Ledesma, Anastassiya Jastrebova, James Harris, James Rosenthal.<br>
+                    Stage Combat Workshop: Neil Tattersall.<br>
+                    Intimacy Workshop: Lucy Hind.</p>
+                </div>
+            </div>
+
+            <!-- ENGLISH -->
+            <div class="lang-content" data-lang-content="en">
+                <div class="vita-section">
+                    <h3>Engagements</h3>
+                    <ul>
+                        <li><span class="vita-year">2025</span><span><span class="vita-role">Dancer</span> · Feature film "Superbuhei (WT)", dir.: Josef Brandl, Junifilm GmbH<br><span class="vita-venue">Summer 2025</span></span></li>
+                        <li><span class="vita-year">2024/25</span><span><span class="vita-role">"Pauline" et al.</span> · children's shows "Game Over", "Snow White and Rose Red", "Little Red Riding Hood"<br><span class="vita-venue">Varia Vineta (Stadttheater Pankow), Berlin</span></span></li>
+                        <li><span class="vita-year">2020</span><span><span class="vita-role">"Elfie"</span> · Rio Reiser<br><span class="vita-venue">Stadttheater Bremerhaven</span></span></li>
+                        <li><span class="vita-year">2019</span><span><span class="vita-role">Choreography</span> · dance sequence in the short film "Superbuhei", dir.: Josef Brandl, Skalar Film GmbH</span></li>
+                        <li><span class="vita-year">2018</span><span><span class="vita-role">Ensemble</span> · Blues Brothers<br><span class="vita-venue">Stadttheater Bremerhaven</span></span></li>
+                    </ul>
+                </div>
+                <div class="vita-section">
+                    <h3>Education</h3>
+                    <ul>
+                        <li><span class="vita-year">2023</span><span><span class="vita-role">Master of Arts in Musical Theatre</span>, with merit<br><span class="vita-venue">Leeds Conservatoire, UK</span></span></li>
+                    </ul>
+                </div>
+                <div class="vita-section">
+                    <h3>Vocal Training</h3>
+                    <p>Trained in Complete Vocal Technique (CVT) and the Estill Method with Stephanie Müller, Sarah Redgwick, Kathy Taylor-Jones and Aaron Newland-Bentley.</p>
+                </div>
+                <div class="vita-section">
+                    <h3>Acting</h3>
+                    <p>Lessons with Keeley Forsyth, Victoria Gimby, Nicki Davy and Adam Stadius, including the Meisner Technique.</p>
+                </div>
+                <div class="vita-section">
+                    <h3>Dance</h3>
+                    <p>Ongoing training with Lucy Hind, Isabella Klesse, Amelie Harreß, Damien Poole and Kade Ferraiolo.</p>
+                </div>
+                <div class="vita-section">
+                    <h3>Masterclasses &amp; Workshops</h3>
+                    <p>Singing: Pia Douwes, Willemijn Verkaik, Andreas Bongard among others.<br>
+                    Dance: Neus Ledesma, Anastassiya Jastrebova, James Harris, James Rosenthal.<br>
+                    Stage Combat Workshop: Neil Tattersall.<br>
+                    Intimacy Workshop: Lucy Hind.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PHOTO DIVIDER: IMGL9632e ===== -->
+    <div class="photo-divider" style="background-image: url('assets/IMGL9632e.jpg'); background-position: center 30%;">
+        <div class="photo-divider-label">
+                <h2>Galerie</h2>
+        </div>
+    </div>
+
+    <!-- ===== GALERIE ===== -->
+    <section id="galerie" class="section">
+        <div class="section-inner" style="max-width: 1100px;">
+            <div class="section-header reveal">
+                   <h2 class="section-title">Bilder</h2>
+                <hr class="section-divider" />
+            </div>
+
+            <!-- Headshots 2025 -->
+            <div class="gallery-group reveal">
+                <h3 class="gallery-group-title">Headshots</h3>
+                <div class="gallery-grid" id="gallery-headshots">
+                    <div class="gallery-item" data-src="assets/Headshots25/IMGL9375a.png"><img src="assets/Headshots25/IMGL9375a.png" alt="Headshot 2025" loading="lazy"><div class="gallery-caption">Cían's Cameras</div></div>
+                    <div class="gallery-item" data-src="assets/Headshots25/9396b.png"><img src="assets/Headshots25/9396b.png" alt="Headshot 2025" loading="lazy"><div class="gallery-caption">Cían's Cameras</div></div>
+                    <div class="gallery-item" data-src="assets/Headshots25/IMGL9441a.png"><img src="assets/Headshots25/IMGL9441a.png" alt="Headshot 2025" loading="lazy"><div class="gallery-caption">Cían's Cameras</div></div>
+                    <div class="gallery-item" data-src="assets/Headshots25/9517a.png"><img src="assets/Headshots25/9517a.png" alt="Headshot 2025" loading="lazy"><div class="gallery-caption">Cían's Cameras</div></div>
+                    <div class="gallery-item" data-src="assets/Headshots25/IMGL9640a.png"><img src="assets/Headshots25/IMGL9640a.png" alt="Headshot 2025" loading="lazy"><div class="gallery-caption">Studio Monbijou</div></div>
+                    <div class="gallery-item" data-src="assets/Headshots25/IMGL9551a.png"><img src="assets/Headshots25/IMGL9551a.png" alt="Headshot 2025" loading="lazy"><div class="gallery-caption">Studio Monbijou</div></div>
+                    <div class="gallery-item" data-src="assets/Headshots25/IMGL9466a.png"><img src="assets/Headshots25/IMGL9466a.png" alt="Headshot 2025" loading="lazy"><div class="gallery-caption">Studio Monbijou</div></div>
+                    <div class="gallery-item" data-src="assets/Headshots25/IMGL9472a.png"><img src="assets/Headshots25/IMGL9472a.png" alt="Headshot 2025" loading="lazy"><div class="gallery-caption">Studio Monbijou</div></div>
+                </div>
+            </div>
+
+            <!-- Portraits 2024 -->
+            <div class="gallery-group reveal">
+                <h3 class="gallery-group-title">Portraits</h3>
+                <div class="gallery-grid gallery-portraits" id="gallery-portraits">
+                    <div class="gallery-item" data-src="assets/Headshots24/DSC05897b.png"><img src="assets/Headshots24/DSC05897b.png" alt="Portrait 2024" loading="lazy"><div class="gallery-caption">Selenophile Art</div></div>
+                    <div class="gallery-item" data-src="assets/Headshots24/DSC05922b.png"><img src="assets/Headshots24/DSC05922b.png" alt="Portrait 2024" loading="lazy"><div class="gallery-caption">Selenophile Art</div></div>
+                    <div class="gallery-item" data-src="assets/Headshots24/DSC05942d.png"><img src="assets/Headshots24/DSC05942d.png" alt="Portrait 2024" loading="lazy"><div class="gallery-caption">Selenophile Art</div></div>
+                    <div class="gallery-item" data-src="assets/Headshots24/DSC06106a.png"><img src="assets/Headshots24/DSC06106a.png" alt="Portrait 2024" loading="lazy"><div class="gallery-caption">Selenophile Art</div></div>
+                    <div class="gallery-item" data-src="assets/Headshots24/DSC06012a.png"><img src="assets/Headshots24/DSC06012a.png" alt="Portrait 2024" loading="lazy"><div class="gallery-caption">Selenophile Art</div></div>
+                    <div class="gallery-item" data-src="assets/Headshots24/DSC06290a.png"><img src="assets/Headshots24/DSC06290a.png" alt="Portrait 2024" loading="lazy"><div class="gallery-caption">Selenophile Art</div></div>
+                    <div class="gallery-item" data-src="assets/Headshots24/DSC06328c.png"><img src="assets/Headshots24/DSC06328c.png" alt="Portrait 2024" loading="lazy"><div class="gallery-caption">Selenophile Art</div></div>
+                </div>
+            </div>
+
+            <!-- Kindertheater -->
+            <div class="gallery-group reveal">
+                <h3 class="gallery-group-title">Kindertheater</h3>
+                <div class="gallery-grid cols-3" id="gallery-kinder">
+                    <div class="gallery-item gallery-item-landscape" data-src="assets/Varia/GameOv1.jpg"><img src="assets/Varia/GameOv1.jpg" alt="Pauline in Game Over 2025" loading="lazy"><div class="gallery-caption">„Pauline" in Game Over, 2025</div></div>
+                    <div class="gallery-item gallery-item-landscape" data-src="assets/Varia/GameOv2.jpg"><img src="assets/Varia/GameOv2.jpg" alt="Game Over 2025" loading="lazy"><div class="gallery-caption">„Pauline" in Game Over, 2025</div></div>
+                    <div class="gallery-item gallery-item-landscape" data-src="assets/Varia/GameOv3.jpg"><img src="assets/Varia/GameOv3.jpg" alt="Game Over 2025" loading="lazy"><div class="gallery-caption">„Pauline" in Game Over, 2025</div></div>
+                    <div class="gallery-item gallery-item-landscape" data-src="assets/Varia/GameOv5.jpg"><img src="assets/Varia/GameOv5.jpg" alt="Game Over 2025" loading="lazy"><div class="gallery-caption">„Pauline" in Game Over, 2025</div></div>
+                    <div class="gallery-item gallery-item-landscape" data-src="assets/Varia/GameOv6.jpg"><img src="assets/Varia/GameOv6.jpg" alt="Game Over 2025" loading="lazy"><div class="gallery-caption">„Pauline" in Game Over, 2025</div></div>
+                    <div class="gallery-item gallery-item-landscape" data-src="assets/Varia/Schneeweisschen1.jpg"><img src="assets/Varia/Schneeweisschen1.jpg" alt="Schneeweißchen 2024" loading="lazy"><div class="gallery-caption">„Schneeweißchen" in Schneeweißchen &amp; Rosenrot, 2024</div></div>
+                </div>
+            </div>
+
+	 </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Bildvorschau">
+        <button class="lightbox-close" id="lbClose" aria-label="Schließen">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Vorheriges Bild">&#8592;</button>
+        <img class="lightbox-img" id="lbImg" src="" alt="" />
+        <button class="lightbox-nav lightbox-next" id="lbNext" aria-label="Nächstes Bild">&#8594;</button>
+    </div>
+
+    <!-- ===== PHOTO DIVIDER: Sydney5 ===== -->
+    <div class="photo-divider" style="background-image: url('assets/Sydney5.jpg'); background-position: center 40%;">
+        <div class="photo-divider-label">
+            <h2>Media</h2>
+        </div>
+    </div>
+
+    <!-- ===== MEDIA ===== -->
+    <section id="media" class="section">
+        <div class="section-inner" style="max-width: 1000px;">
+            <div class="section-header reveal">
+                <h2 class="section-title">Showreels</h2>
+                <hr class="section-divider" />
+            </div>
+
+            <!-- Gesang -->
+            <div class="media-group reveal">
+                <h3 class="media-group-title">Gesang</h3>
+                <div class="media-grid">
+                    <div>
+                        <div class="media-card">
+                            <video controls poster="assets/media/gesang.png">
+                                <source src="assets/media/Gesangsreel.mp4" type="video/mp4">
+                            </video>
+                            <div class="media-label">
+                                <img src="assets/german.png" alt="Deutsch" class="flag"><img src="assets/uk.png" alt="English" class="flag"> Gesangsreel 2026
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                       
+                    <div>
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem; height: 100%; justify-content: center;">
+                            <div class="audio-box">
+                                <audio controls class="w-100">
+                                    <source src="assets/media/History of Wrong Guys.mp3" type="audio/mpeg">
+                                </audio>
+                                <p class="audio-label"><img src="assets/german.png" alt="Deutsch" class="flag"> „Liste falscher Kerle" aus Kinky Boots</p>
+                            </div>
+                            <div class="audio-box">
+                                <audio controls class="w-100">
+                                    <source src="assets/media/Divas Lament (Spamalot).mp3" type="audio/mpeg">
+                                </audio>
+                                <p class="audio-label"><img src="assets/german.png" alt="Deutsch" class="flag"> „Divas Lament" aus Spamalot</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </header>
-       </main>
+            </div>
 
-        <!-- Footer-->
-        <footer class="bg-white py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0">Copyright &copy; Annika Woitke 2026</div></div>
-                    <div class="col-auto">
-                        <a class="small" href="terms">Impressum</a>
-                        <span class="mx-1">&middot;</span>
-                        <a class="small" href="privacy">Datenschutzerklärung</a>
+            <!-- Schauspiel -->
+            <div class="media-group reveal">
+                <h3 class="media-group-title">Schauspiel</h3>
+                <div style="max-width: 640px;">
+                    <div class="media-card">
+                    <div>
+                        <div class="media-card">
+                            <video controls poster="assets/media/show.png">
+                                <source src="assets/media/Showreel 2026.mp4" type="video/mp4">
+                            </video>
+                            <div class="media-label">
+                                <img src="assets/german.png" alt="Deutsch" class="flag"><img src="assets/uk.png" alt="English" class="flag"> Showreel 2026
+                            </div>
+                        </div>
+                    </div>
+                    <div>
                     </div>
                 </div>
             </div>
-        </footer>
 
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-	</main>
-    </body>
+            <!-- Tanz -->
+            <div class="media-group reveal">
+                <h3 class="media-group-title">Tanz</h3>
+                <div style="max-width: 640px;">
+                    <div class="media-card">
+                        <video controls poster="assets/media/tanz.png">
+                            <source src="assets/media/Tanz Reel 2026.mp4" type="video/mp4">
+                        </video>
+                        <div class="media-label">Tanzreel 2026</div>
+                    </div>
+        <!-- Weitere Videos Box -->
+        <div class="more-videos-box">
+            <p>Weitere Gesang-, Schauspiel- und Tanzvideos:</p>
+            <a href="https://drive.google.com/drive/folders/1RfsR87Qvc31qD2ruac4ZfAeERzEcCRDO?usp=sharing" target="_blank" rel="noopener" class="cta-link">
+                Link zu Google Drive →
+           	 </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== KONTAKT ===== -->
+    <section id="kontakt">
+        <div class="contact-inner">
+            <div class="contact-eyebrow">Kontakt</div>
+            <h2 class="contact-title">Let's talk!</h2>
+            <div class="contact-divider"></div>
+            <p class="contact-lead">Für Anfragen, Engagements oder einfach ein Hallo &mdash; ich freue mich auf Ihre Nachricht.</p>
+            <div class="contact-cards">
+                <a href="mailto:info@woitke.de?subject=Anfrage&body=Hallo%20Annika,%0A%0Aich%20habe%20eine%20Frage" class="contact-card">
+                    <div>
+                        <div class="contact-card-label">E-Mail</div>
+                        <div class="contact-card-value">info@woitke.de</div>
+                    </div>
+                    <span class="contact-arrow">→</span>
+                </a>
+                <a href="https://www.filmmakers.eu/de/actors/annika-woitke" target="_blank" rel="noopener" class="contact-card">
+                    <div>
+                        <div class="contact-card-label">Casting-Profil</div>
+                        <div class="contact-card-value">Filmmakers</div>
+                    </div>
+                    <span class="contact-arrow">→</span>
+                </a>
+                <a href="https://www.instagram.com/annika_woitke" target="_blank" rel="noopener" class="contact-card">
+                    <div>
+                        <div class="contact-card-label">Social</div>
+                        <div class="contact-card-value">@annika_woitke</div>
+                    </div>
+                    <span class="contact-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-inner">
+            <div>&copy; Annika Woitke 2026</div>
+            <div class="footer-links">
+                <a href="terms.html">Impressum</a>
+                <a href="privacy.html">Datenschutzerklärung</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== NAV: scrolled state & active link =====
+        const nav = document.getElementById('mainNav');
+        const sections = document.querySelectorAll('section[id], div[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        function updateNav() {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+
+            let current = '';
+            document.querySelectorAll('section[id]').forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+            });
+            navLinks.forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+            });
+        }
+        window.addEventListener('scroll', updateNav, { passive: true });
+        updateNav();
+
+        // ===== HAMBURGER =====
+        const toggle = document.getElementById('navToggle');
+        const linksList = document.getElementById('navLinks');
+        toggle.addEventListener('click', () => {
+            toggle.classList.toggle('open');
+            linksList.classList.toggle('open');
+        });
+        linksList.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                toggle.classList.remove('open');
+                linksList.classList.remove('open');
+            });
+        });
+
+        // ===== LANG TOGGLE =====
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                document.querySelectorAll('.lang-btn').forEach(b => {
+                    b.classList.toggle('active', b === btn);
+                });
+                document.querySelectorAll('.lang-content').forEach(c => {
+                    c.classList.toggle('active', c.dataset.langContent === lang);
+                });
+            });
+        });
+
+        // ===== LIGHTBOX =====
+        let allImages = [];
+        let currentIdx = 0;
+        let touchStartX = 0;
+
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const src = item.dataset.src;
+                allImages = [...document.querySelectorAll('.gallery-item')].map(i => ({
+                    src: i.dataset.src,
+                    alt: i.querySelector('img').alt
+                }));
+                currentIdx = allImages.findIndex(i => i.src === src);
+                openLightbox(currentIdx);
+            });
+        });
+
+        function openLightbox(idx) {
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lbImg');
+            img.src = allImages[idx].src;
+            img.alt = allImages[idx].alt;
+            lb.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        document.getElementById('lbClose').addEventListener('click', closeLightbox);
+        document.getElementById('lightbox').addEventListener('click', e => {
+            if (e.target === e.currentTarget) closeLightbox();
+        });
+        document.getElementById('lbPrev').addEventListener('click', e => {
+            e.stopPropagation();
+            currentIdx = (currentIdx - 1 + allImages.length) % allImages.length;
+            openLightbox(currentIdx);
+        });
+        document.getElementById('lbNext').addEventListener('click', e => {
+            e.stopPropagation();
+            currentIdx = (currentIdx + 1) % allImages.length;
+            openLightbox(currentIdx);
+        });
+
+        // Touch-Wischen für Lightbox
+        const lb = document.getElementById('lightbox');
+        lb.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+        lb.addEventListener('touchend', e => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(dx) > 50) {
+                if (dx < 0) currentIdx = (currentIdx + 1) % allImages.length;
+                else currentIdx = (currentIdx - 1 + allImages.length) % allImages.length;
+                openLightbox(currentIdx);
+            }
+        }, { passive: true });
+
+        document.addEventListener('keydown', e => {
+            if (!document.getElementById('lightbox').classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') { currentIdx = (currentIdx - 1 + allImages.length) % allImages.length; openLightbox(currentIdx); }
+            if (e.key === 'ArrowRight') { currentIdx = (currentIdx + 1) % allImages.length; openLightbox(currentIdx); }
+        });
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // ===== SCROLL REVEAL =====
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ===== MEDIA: pause others on play =====
+        const mediaEls = document.querySelectorAll('video, audio');
+        mediaEls.forEach(m => {
+            m.addEventListener('play', () => {
+                mediaEls.forEach(o => { if (o !== m) o.pause(); });
+            });
+        });
+
+        // ===== FULLSCREEN: preserve scroll =====
+        let lastScrollY = 0;
+        function onFsChange() {
+            if (document.fullscreenElement || document.webkitFullscreenElement) {
+                lastScrollY = window.scrollY;
+            } else {
+                window.scrollTo({ top: lastScrollY, behavior: 'instant' });
+            }
+        }
+        document.addEventListener('fullscreenchange', onFsChange);
+        document.addEventListener('webkitfullscreenchange', onFsChange);
+    </script>
+</body>
 </html>
